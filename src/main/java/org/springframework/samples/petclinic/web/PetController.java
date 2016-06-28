@@ -28,7 +28,10 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @author Juergen Hoeller
@@ -73,6 +76,21 @@ public class PetController {
         owner.addPet(pet);
         model.put("pet", pet);
         return "pets/createOrUpdatePetForm";
+    }
+    @RequestMapping(value = "/pet", method = RequestMethod.GET )
+    public  @ResponseBody List<Pet> showPetsForOwner(@PathVariable("ownerId") int ownerid){
+    	
+    	
+    	
+    	 Owner ownerbyid = this.clinicService.findOwnerById(ownerid);
+    	 List<Pet>  pets = new ArrayList<Pet>();
+    	 
+    	 pets.addAll(ownerbyid.getPets());
+    	 return pets;
+    	 
+         
+    	
+    	
     }
 
     @RequestMapping(value = "/pets/new", method = RequestMethod.POST)

@@ -21,7 +21,7 @@
         <datatables:table id="owners" data="${selections}" row="owner"
                           cssClass="table table-striped" pageable="false" info="false" export="pdf">
             <datatables:column title="Name" cssStyle="width: 150px;" display="html">
-                <spring:url value="/owners/{ownerId}.html" var="ownerUrl">
+                <spring:url value="/owners/{ownerId}/pet.xml" var="ownerUrl">
                     <spring:param name="ownerId" value="${owner.id}"/>
                 </spring:url>
                 <a href="${fn:escapeXml(ownerUrl)}"><c:out value="${owner.firstName} ${owner.lastName}"/></a>

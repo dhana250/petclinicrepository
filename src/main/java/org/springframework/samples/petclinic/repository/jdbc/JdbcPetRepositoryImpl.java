@@ -130,4 +130,10 @@ public class JdbcPetRepositoryImpl implements PetRepository {
             .addValue("owner_id", pet.getOwner().getId());
     }
 
+	@Override
+	public List<Pet> findPetsByOwner(Owner owner) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

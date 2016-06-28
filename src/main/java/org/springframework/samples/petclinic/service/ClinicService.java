@@ -16,6 +16,7 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
@@ -37,6 +38,7 @@ public interface ClinicService {
     Owner findOwnerById(int id) throws DataAccessException;
 
     Pet findPetById(int id) throws DataAccessException;
+    List<Pet> findPetsByOwner(Owner owner);
 
     void savePet(Pet pet) throws DataAccessException;
 

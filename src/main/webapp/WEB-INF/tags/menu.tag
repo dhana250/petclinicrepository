@@ -44,7 +44,17 @@
                         <c:set var="cssMenu" value=""/>
                     </c:otherwise>
                 </c:choose>
-                <li class="${cssMenu}"><a href="<spring:url value="/vets.html" htmlEscape="true" />"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span><span> Veterinarians</span></a></li>
+                <li class="${cssMenu}"><a href="<spring:url value="/vets.xml" htmlEscape="true" />"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span><span> Veterinarians</span></a></li>
+                 <c:choose>
+                    <c:when test="${name eq 'appointment'}">
+                        <c:set var="cssMenu" value="active"/>
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="cssMenu" value=""/>
+                    </c:otherwise>
+                </c:choose>
+                <li class="${cssMenu}"><a href="<spring:url value="/appointment" htmlEscape="true" />"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span><span> Appointment</span></a></li>
+                
                 <c:choose>
                     <c:when test="${name eq 'error'}">
                         <c:set var="cssMenu" value="active"/>
@@ -53,6 +63,7 @@
                         <c:set var="cssMenu" value=""/>
                     </c:otherwise>
                 </c:choose>
+                
                 <li class="${cssMenu}"><a href="<spring:url value="/oups.html" htmlEscape="true" />"
                        title="trigger a RuntimeException to see how it is handled"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span><span> Error</span></a></li>
             </ul>

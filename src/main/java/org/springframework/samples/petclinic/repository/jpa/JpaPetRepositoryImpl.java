@@ -19,7 +19,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
+import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.repository.PetRepository;
@@ -59,5 +61,14 @@ public class JpaPetRepositoryImpl implements PetRepository {
             this.em.merge(pet);
         }
     }
+
+	@Override
+	public List<Pet> findPetsByOwner(Owner owner) {
+		Query query = this.em.createQuery("from Pet pet where owner =:owner");
+		query.setParameter("owner", owner);
+		return query.getResultList();
+		
+		
+	}
 
 }

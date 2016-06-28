@@ -16,6 +16,7 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,6 +109,12 @@ public class ClinicServiceImpl implements ClinicService {
     public Collection<Vet> findVets() throws DataAccessException {
         return vetRepository.findAll();
     }
+
+	@Override
+	public List<Pet> findPetsByOwner(Owner owner) {
+		// TODO Auto-generated method stub
+		return petRepository.findPetsByOwner(owner);
+	}
 
 
 }

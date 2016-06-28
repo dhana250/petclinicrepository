@@ -1,5 +1,10 @@
 package org.springframework.samples.petclinic;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -13,15 +18,20 @@ import org.springframework.samples.petclinic.repository.AppointmentRespository;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
+import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.itextpdf.text.log.SysoCounter;
+
 @ContextConfiguration(locations = {"classpath:spring/business-config.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("jpa")
 public class AppointmentTest {
+	@Autowired
+	ClinicService clinicservice;
 
 	@Autowired 
 	AppointmentRespository as;
@@ -38,23 +48,14 @@ public class AppointmentTest {
 	
 	@Test
 	@Transactional
-	@Rollback(false)
-	public void createAppointment() {
-		Owner betty = or.findById(2);
-		Vet vet = vr.findAll().iterator().next();
-		Pet p = pr.findById(2);
-		Appointment a = new Appointment();
-		a.setOwner(betty);
-		a.setPet(p);
-		a.setVet(vet);
-		a.setSlot(9);
-		a.setStatus("ACTIVE");
+	
+	public void getPetsByOwner(){
 		
-		as.save(a);
+		 this.or.findByLastName("");
+		
+    	}
 		
 		
-		
-		System.out.println(betty.getAddress());
 	}
 	
-}
+

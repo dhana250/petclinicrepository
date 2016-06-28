@@ -77,7 +77,7 @@ public class PetController {
         model.put("pet", pet);
         return "pets/createOrUpdatePetForm";
     }
-    @RequestMapping(value = "/pet", method = RequestMethod.GET )
+    @RequestMapping(value = "/pet", method = RequestMethod.GET,produces = "application/json" )
     public  @ResponseBody List<Pet> showPetsForOwner(@PathVariable("ownerId") int ownerid){
     	
     	
